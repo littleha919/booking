@@ -1,0 +1,127 @@
+﻿@model slnLLWP.Models.tTryPetTable
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>新增試養寵物資料</h2>
+
+
+@using (Html.BeginForm("Create", "tryPet", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.fTryPetNum, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.fTryPetNum, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.fTryPetNum, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.fTryPetName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.fTryPetName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.fTryPetName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.fTryPetVar, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.RadioButtonFor(model => model.fTryPetVar, "貓")
+            貓
+            @Html.RadioButtonFor(model => model.fTryPetVar, "狗")
+            狗
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.fTryPetAge, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.fTryPetWei, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.fTryPetWei, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.fTryPetWei, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.fTryPetWei, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.fTryPetWei, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.fTryPetSex, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.RadioButtonFor(model => model.fTryPetSex, "公")
+            公
+            @Html.RadioButtonFor(model => model.fTryPetSex, "母")
+            母
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.fTryPetNature, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.fTryPetNature, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.fTryPetNature, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.fTryPetVac, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.RadioButtonFor(model => model.fTryPetVac, "是")
+            是
+            @Html.RadioButtonFor(model => model.fTryPetVac, "否")
+            否
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.fTryPetFix, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.RadioButtonFor(model => model.fTryPetFix, "是")
+            是
+            @Html.RadioButtonFor(model => model.fTryPetFix, "否")
+            否
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.fTryPetPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="fImage" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+    </div>
+    }
+
+    <div>
+        @Html.ActionLink("回到試養寵物資料表", "List")
+    </div>
+
+    @if (TempData["message"] != null)
+    {
+        <script type="text/javascript">
+    var message = @Html.Raw(Json.Encode(TempData["message"]));
+    alert(message);
+        </script>
+
+    }
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

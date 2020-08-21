@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbLLWPModelStoreContainer" CdmEntityContainer="dbLLWPEntities1">
+    <EntitySetMapping Name="tTryPetTable">
+      <EntityTypeMapping TypeName="dbLLWPModel.tTryPetTable">
+        <MappingFragment StoreEntitySet="tTryPetTable">
+          <ScalarProperty Name="fTryPetId" ColumnName="fTryPetId" />
+          <ScalarProperty Name="fTryPetNum" ColumnName="fTryPetNum" />
+          <ScalarProperty Name="fTryPetName" ColumnName="fTryPetName" />
+          <ScalarProperty Name="fTryPetVar" ColumnName="fTryPetVar" />
+          <ScalarProperty Name="fTryPetAge" ColumnName="fTryPetAge" />
+          <ScalarProperty Name="fTryPetWei" ColumnName="fTryPetWei" />
+          <ScalarProperty Name="fTryPetSex" ColumnName="fTryPetSex" />
+          <ScalarProperty Name="fTryPetNature" ColumnName="fTryPetNature" />
+          <ScalarProperty Name="fTryPetVac" ColumnName="fTryPetVac" />
+          <ScalarProperty Name="fTryPetFix" ColumnName="fTryPetFix" />
+          <ScalarProperty Name="fTryPetPhoto" ColumnName="fTryPetPhoto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

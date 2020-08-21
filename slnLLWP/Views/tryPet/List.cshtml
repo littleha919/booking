@@ -1,0 +1,114 @@
+﻿@model IEnumerable<slnLLWP.Models.tTryPetTable>
+@using slnLLWP.Models;
+@{
+    ViewBag.Title = "試養寵物管理系統";
+}
+@functions{
+    public string getVirtualPath(string path)
+    {
+        if (string.IsNullOrEmpty(path))
+            return "";
+        string[] items = path.Split("\\".ToCharArray());
+        if (items.Length > 1)
+            return "../Content/" + items[items.Length - 1];
+        return path;
+    }
+}
+
+<h2>試養寵物資料管理</h2>
+
+<p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-inline">
+            <div>
+                @*<input type="text" hint="關鍵字" class="form-control" name="txtKeyword" />*@
+                @Html.TextBox("txtKeyword", null, new { Class = "form-control" })
+                <input type="submit" value="搜尋" class="btn btn-default" />
+                @Html.ActionLink("顯示全部", "ShowList", "tryPet", null, new { Class = "btn btn-info" })
+                @Html.ActionLink("新增試養寵物資料", "Create", "tryPet", null, new { Class = "btn btn-warning" })
+            </div>
+        </div>
+    }
+</p>
+<table class="table table-hover" >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fTryPetNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fTryPetName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fTryPetVar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fTryPetAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fTryPetWei)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fTryPetSex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fTryPetNature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fTryPetVac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fTryPetFix)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fTryPetPhoto)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fTryPetNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fTryPetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fTryPetVar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fTryPetAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fTryPetWei)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fTryPetSex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fTryPetNature)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fTryPetVac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fTryPetFix)
+            </td>
+            <td>
+                @*@Html.Image("../Content/tryPetPic/01.jpg", 100.ToString())*@
+                @Html.Image(@getVirtualPath(item.fTryPetPhoto), 200.ToString())
+            </td>
+            <td>
+                @Html.ActionLink("編輯", "Edit","tryPet", new { id = item.fTryPetId }, new { Class = "btn btn-success" }) 
+                @*@Html.ActionLink("詳情", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                @Html.ActionLink("刪除", "Delete", "tryPet", new { id = item.fTryPetId }, new { Class = "btn btn-danger",Onclick = "return confirm('確定要刪除嗎？')" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
